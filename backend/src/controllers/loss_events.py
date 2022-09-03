@@ -12,11 +12,11 @@ app, api = server.app, server.api
 
 @api.route("/loss-events")
 class LossEvents(Resource):
-     def get(self):
-        cursor = mongo.db.loss_events.find()
+    def get(self):
+        cursor = mongo.db.lossEvents.find()
         response = LossEvents.serialize(cursor)
         return Response(response, mimetype="application/json", status=200)
 
-     def serialize(obj):
-         return [dumps(doc, default=json_util.default) for doc in obj]
+    def serialize(obj):
+        return [dumps(doc, default=json_util.default) for doc in obj]
 
