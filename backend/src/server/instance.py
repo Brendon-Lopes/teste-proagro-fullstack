@@ -17,6 +17,6 @@ class Server():
         )
 
     def run(self):
-        self.app.run(debug=True, host=os.getenv("API_HOST"), port=os.getenv("PORT"))
+        self.app.run(debug=(os.getenv("DEBUG_MODE") == "True"), host=os.getenv("API_HOST"), port=os.getenv("PORT"))
 
 server = Server()
