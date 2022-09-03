@@ -1,0 +1,24 @@
+[
+  {
+    "nome": "John Doe",
+    "email": "john@email.com",
+    "cpf": "12345678901",
+    "localizacao": {
+      "LAT": "50.50",
+      "LONG": "100.50"
+    },
+    "dataColheita": "2014-10-10T00:00:00.000Z",
+    "evento": "chuva excessiva"
+  },
+  {
+    "nome": "Alan Turing",
+    "email": "alan@email.com",
+    "cpf": "12345678902",
+    "localizacao": {
+      "LAT": "50.50",
+      "LONG": "80.50"
+    },
+    "dataColheita": "2014-10-10T00:00:00.000Z",
+    "evento": "geada"
+  }
+]
