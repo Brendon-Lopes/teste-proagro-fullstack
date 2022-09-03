@@ -12,7 +12,7 @@ class Server():
         self.api = Api(self.app,
                 version='1.0',
                 title='proagrofacil',
-                description='API para comunicação de perdas',
+                description='API para registro de comunicações de perdas em lavrouras à ProAgro',
                 doc='/docs'
         )
 
