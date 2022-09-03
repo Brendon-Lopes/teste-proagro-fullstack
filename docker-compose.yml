@@ -7,6 +7,7 @@ services:
       - 5000:5000
     depends_on:
       - db
+      - db-seed
     volumes:
       - ./backend/src:/api/src
     env_file:
@@ -18,3 +19,8 @@ services:
     ports:
       - 27017:27017
     restart: always
+  db-seed:
+    container_name: db-seed
+    build: ./backend/src/database/seeders
+    depends_on:
+      - db
