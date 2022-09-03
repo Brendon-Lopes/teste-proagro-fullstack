@@ -1,0 +1,11 @@
+{
+  "python.formatting.provider": "black",
+  "editor.tabSize": 4,
+  "conventionalCommits.scopes": [
+    "docker"
+  ],
+  "python.analysis.extraPaths": [
+    "./src/services",
+    "./src/controllers"
+  ]
+}
