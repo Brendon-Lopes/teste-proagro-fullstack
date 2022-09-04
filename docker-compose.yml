@@ -22,5 +22,7 @@ services:
   db-seed:
     container_name: db-seed
     build: ./backend/src/database/seeders
+    env_file:
+      - ./backend/.env
     depends_on:
       - db
