@@ -10,8 +10,9 @@ class LossEventsValidation:
             abort(BAD_REQUEST, "Não é permitido alterar o id")
 
         attributes = list(data.keys())
+        attributes.sort()
 
-        if not array_equal(attributes.sort(), Utils.CREATE_EVENT_REQUIRED_DATA.sort()):
+        if not array_equal(attributes, Utils.CREATE_EVENT_REQUIRED_DATA):
             abort(BAD_REQUEST, Utils.REQUIRED_DATA_ERROR_MESSAGE)
 
         for key in attributes:
