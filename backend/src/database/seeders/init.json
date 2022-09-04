@@ -7,7 +7,7 @@
       "LAT": 50.50,
       "LONG": 100.50
     },
-    "tipoLavroura": "soja",
+    "tipoLavoura": "soja",
     "dataColheita": "2014-10-10T00:00:00.000Z",
     "evento": "chuva excessiva"
   },
@@ -19,7 +19,7 @@
       "LAT": 50.50,
       "LONG": 80.50
     },
-    "tipoLavroura": "arroz",
+    "tipoLavoura": "arroz",
     "dataColheita": "2014-10-10T00:00:00.000Z",
     "evento": "geada"
   }
