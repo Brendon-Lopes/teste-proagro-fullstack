@@ -6,9 +6,12 @@ from utils.index import Utils
 
 class LossEventsValidation:
     def validate_create_data(data):
+        if "_id" in data:
+            abort(BAD_REQUEST, "Não é permitido alterar o id")
+
         attributes = list(data.keys())
 
-        if not array_equal(attributes, Utils.CREATE_EVENT_REQUIRED_DATA):
+        if not array_equal(attributes.sort(), Utils.CREATE_EVENT_REQUIRED_DATA.sort()):
             abort(BAD_REQUEST, Utils.REQUIRED_DATA_ERROR_MESSAGE)
 
         for key in attributes:
