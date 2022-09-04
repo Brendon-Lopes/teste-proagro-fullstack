@@ -1,9 +1,10 @@
-from http.client import NO_CONTENT, OK
+from http.client import CONFLICT, NO_CONTENT, OK
 from database.connection import loss_events_collection
 from bson.objectid import ObjectId
 from utils.index import Utils
 from flask_restx import abort
 from validations.loss_events_validations import LossEventsValidation as validation
+from services.loss_events_service import LossEventsService
 
 
 class LossEventsByIdService:
@@ -13,7 +14,7 @@ class LossEventsByIdService:
         if type(cursor) is type(None):
             abort(404, Utils.NOT_FOUND_ERROR_MESSAGE)
 
-        response = Utils.serializeDict(cursor)
+        response = Utils.serialize_dict(cursor)
 
         return response, OK
 
@@ -28,8 +29,23 @@ class LossEventsByIdService:
     def update(id, data):
         validation.validate_create_data(data)
 
+        near = LossEventsService.check_for_near_occurrences(
+            (data["localizacao"]["LAT"], data["localizacao"]["LONG"]),
+            data["dataColheita"],
+            data["evento"],
+            id,
+        )
+
+        if near is not False:
+            obj = {
+                "message": Utils.CONFLICT_MESSAGE,
+                "conflict": near,
+            }
+            response = Utils.serialize_dict(obj)
+            return response, CONFLICT
+
         loss_events_collection.update_one({"_id": ObjectId(id)}, {"$set": data})
 
-        response = Utils.serializeDict({"message": "updated"})
+        response = Utils.serialize_dict({"message": "updated"})
 
         return response, OK
