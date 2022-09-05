@@ -1,10 +1,12 @@
 from http.client import CONFLICT, NO_CONTENT, OK
-from database.connection import loss_events_collection
 from bson.objectid import ObjectId
 from utils.index import Utils
 from flask_restx import abort
 from validations.loss_events_validations import LossEventsValidation as validation
 from services.loss_events_service import LossEventsService
+from server.instance import server
+
+loss_events_collection = server.loss_events_collection
 
 
 class LossEventsByIdService:

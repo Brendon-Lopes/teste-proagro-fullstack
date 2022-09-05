@@ -1,9 +1,11 @@
 from http.client import CONFLICT, CREATED, OK
-from database.connection import loss_events_collection
 from utils.index import Utils
 from validations.loss_events_validations import LossEventsValidation as validation
 from geopy.distance import geodesic
 from bson.objectid import ObjectId
+from server.instance import server
+
+loss_events_collection = server.loss_events_collection
 
 
 class LossEventsService:
