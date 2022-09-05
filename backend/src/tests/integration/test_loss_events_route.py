@@ -1,7 +1,8 @@
-from http.client import BAD_REQUEST, CREATED, OK
-from unittest.mock import Mock, MagicMock
+from http.client import BAD_REQUEST, CONFLICT, CREATED, OK
+from unittest.mock import Mock
 from services.loss_events_service import loss_events_collection
 from json import loads
+from tests.mocks.sent_data_conflict_mock import SENT_DATA_CONFLICT_MOCK
 from tests.mocks.sent_data_mock import SENT_DATA_MOCK
 from utils.index import Utils
 from tests.mocks.get_all_mock import GET_ALL_MOCK
@@ -58,3 +59,30 @@ def test_post_with_valid_data(test_app):
 
     loss_events_collection.insert_one.reset_mock()
     loss_events_collection.find.reset_mock()
+
+
+def test_post_with_conflict(test_app):
+    client = test_app.test_client()
+
+    insert_one = loss_events_collection.insert_one = Mock(return_value=[])
+    find = loss_events_collection.find = Mock(return_value=GET_ALL_MOCK)
+
+    resp = client.post("/loss-events", json=SENT_DATA_CONFLICT_MOCK)
+
+    data = loads(resp.data.decode())
+
+    expected_data = {
+        "message": Utils.CONFLICT_MESSAGE,
+        "conflict": GET_ALL_MOCK[0],
+    }
+
+    assert insert_one.call_count == 0
+
+    assert find.call_count == 1
+
+    assert data == expected_data
+
+    assert resp.status_code == CONFLICT
+
+    find.reset_mock()
+    insert_one.reset_mock()
