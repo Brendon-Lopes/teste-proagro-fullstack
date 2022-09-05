@@ -1,4 +1,4 @@
-from http.client import BAD_REQUEST, INTERNAL_SERVER_ERROR
+from http.client import INTERNAL_SERVER_ERROR
 from werkzeug import Response
 from flask_restx import Resource, abort
 from services.loss_events_service import LossEventsService
