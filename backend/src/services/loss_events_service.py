@@ -50,7 +50,6 @@ class LossEventsService:
             all_events = loss_events_collection.find()
 
         for event in all_events:
-            print(event["localizacao"], flush=True)
             event_coordinates = (
                 event["localizacao"]["LAT"],
                 event["localizacao"]["LONG"],
