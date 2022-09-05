@@ -5,5 +5,5 @@ SENT_DATA_MOCK = {
     "localizacao": {"LAT": 50.5, "LONG": 80.5},
     "tipoLavoura": "arroz",
     "dataColheita": "2014-10-10T00:00:00.000Z",
-    "evento": "chuva excessiva",
+    "evento": "CHUVA EXCESSIVA",
 }
