@@ -78,7 +78,7 @@ def test_delete_one_not_found(test_app):
 def test_update_success(test_app):
     client = test_app.test_client()
 
-    find_one = loss_events_collection.find_one = Mock(return_value=[])
+    find = loss_events_collection.find = Mock(return_value=[])
     find_one_and_update = loss_events_collection.find_one_and_update = Mock(
         return_value=SENT_DATA_MOCK
     )
@@ -88,13 +88,13 @@ def test_update_success(test_app):
     assert resp.status_code == OK
 
     find_one_and_update.reset_mock()
-    find_one.reset_mock()
+    find.reset_mock()
 
 
 def test_update_not_found(test_app):
     client = test_app.test_client()
 
-    find_one = loss_events_collection.find_one = Mock(return_value=None)
+    find = loss_events_collection.find = Mock(return_value=[])
     find_one_and_update = loss_events_collection.find_one_and_update = Mock(
         return_value=None
     )
@@ -108,7 +108,7 @@ def test_update_not_found(test_app):
     assert resp.status_code == NOT_FOUND
 
     find_one_and_update.reset_mock()
-    find_one.reset_mock()
+    find.reset_mock()
 
 
 def test_update_conflict(test_app):
