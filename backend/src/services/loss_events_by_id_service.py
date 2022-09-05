@@ -13,7 +13,7 @@ class LossEventsByIdService:
     def getById(id):
         cursor = loss_events_collection.find_one({"_id": ObjectId(id)})
 
-        if type(cursor) is type(None):
+        if isinstance(cursor, type(None)):
             abort(404, Utils.NOT_FOUND_ERROR_MESSAGE)
 
         response = Utils.serialize_dict(cursor)
@@ -46,7 +46,12 @@ class LossEventsByIdService:
             response = Utils.serialize_dict(obj)
             return response, CONFLICT
 
-        loss_events_collection.update_one({"_id": ObjectId(id)}, {"$set": data})
+        updated = loss_events_collection.find_one_and_update(
+            {"_id": ObjectId(id)}, {"$set": data}
+        )
+
+        if isinstance(updated, type(None)):
+            abort(404, Utils.NOT_FOUND_ERROR_MESSAGE)
 
         response = Utils.serialize_dict({"message": "updated"})
 
