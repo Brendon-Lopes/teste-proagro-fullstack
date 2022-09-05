@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_restx import Api
 import os
+from flask_pymongo import PyMongo
 
 load_dotenv()
 
@@ -9,6 +10,11 @@ load_dotenv()
 class Server:
     def __init__(self):
         self.app = Flask(__name__)
+        self.app.config[
+            "MONGO_URI"
+        ] = f"mongodb://{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+        self.mongo = PyMongo(self.app)
+        self.loss_events_collection = self.mongo.db.lossEvents
         self.api = Api(
             self.app,
             version="1.0",
