@@ -3,6 +3,7 @@ from flask import Flask
 from flask_restx import Api
 import os
 from flask_pymongo import PyMongo
+from flask_cors import CORS
 
 load_dotenv()
 
@@ -10,6 +11,7 @@ load_dotenv()
 class Server:
     def __init__(self):
         self.app = Flask(__name__)
+        CORS(self.app)
         self.app.config["MONGO_URI"] = os.getenv("MONGO_URI")
         self.mongo = PyMongo(self.app)
         self.loss_events_collection = self.mongo.db.lossEvents
