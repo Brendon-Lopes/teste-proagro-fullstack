@@ -1,13 +1,15 @@
-import axios from 'axios';
 import { Nav } from 'components';
-import { Key, useEffect, useState } from 'react';
+import { IEvent } from 'interfaces/IEvent';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { EventsServices } from 'services/EventsServices';
 
 export function Home() {
-  const [events, setEvents] = useState<{ nome: Key; _id: { $oid: Key } }[]>([]);
+  const [events, setEvents] = useState<IEvent[]>([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const { data } = await axios.get('http://localhost:5000/loss-events');
+      const { data } = await EventsServices.getAll();
       setEvents(data);
     };
     fetchEvents();
@@ -18,12 +20,12 @@ export function Home() {
       <Nav />
       <ul>
         {events.map((event) => (
-          <div key={event._id.$oid}>
+          <Link key={event._id.$oid} to={`/detalhes/${event._id.$oid}`}>
             <li>
-              id: {event._id.$oid}, nome: {event.nome}
+              Nome: {event.nome}, CPF: {event.cpf}
             </li>
             <br />
-          </div>
+          </Link>
         ))}
       </ul>
     </div>
