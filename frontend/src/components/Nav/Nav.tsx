@@ -1,7 +1,7 @@
 export function Nav() {
   return (
     <nav>
-      <p>nav</p>
+      <p>navigator</p>
     </nav>
   );
 }

@@ -1,9 +1,9 @@
-import { Nav } from 'components';
+import { AppRoutes } from 'routes';
 
 function App() {
   return (
     <div>
-      <Nav />
+      <AppRoutes />
     </div>
   );
 }
