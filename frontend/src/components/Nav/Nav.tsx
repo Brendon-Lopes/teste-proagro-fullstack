@@ -8,7 +8,9 @@ export function Nav() {
         <img src={Proagrofacil} alt="Proagro logo" />
         <NavLink
           to="/"
-          className="inline-flex
+          className="
+            hidden
+            sm:inline-flex
             items-center
             justify-center
             rounded-md
@@ -27,7 +29,9 @@ export function Nav() {
         </NavLink>
         <NavLink
           to="/cadastrar-nova-comunicacao"
-          className="inline-flex
+          className="
+            hidden
+            sm:inline-flex
             items-center
             justify-center
             rounded-md
