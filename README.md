@@ -35,6 +35,16 @@ cd teste-proagro-fullstack
 ```
 
 ### Rodando o projeto
+- Instale as dependências do front-end para evitar erros no docker-compose
+```bash
+cd frontend
+```
+```bash
+npm install
+```
+```bash
+cd ..
+```
 
 - Na raíz, rode o projeto com o docker-compose (o docker-compose irá subir o front-end, a API, o banco de dados e os seeders)
 
