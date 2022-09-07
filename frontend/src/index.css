@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-50;
+  @apply h-screen;
+}
+
+#root {
+  @apply h-screen;
+}
+
+.error-message {
+  @apply text-red-500 text-sm pt-1;
+}
