@@ -2,7 +2,7 @@ import { AppRoutes } from 'routes';
 
 function App() {
   return (
-    <div>
+    <div className="h-screen">
       <AppRoutes />
     </div>
   );

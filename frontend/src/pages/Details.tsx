@@ -1,4 +1,4 @@
-import { ConfirmationModal, EventDetailsCard, Nav } from 'components';
+import { ConfirmationModal, EventDetailsCard, Footer, Nav } from 'components';
 import { IEvent } from 'interfaces/IEvent';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -29,10 +29,11 @@ export function Details() {
   }
 
   return (
-    <div>
+    <div className="h-screen flex flex-col justify-between">
       <ConfirmationModal display={display} setDisplay={setDisplay} />
       <Nav />
       <EventDetailsCard event={event} setDisplay={setDisplay} />
+      <Footer />
     </div>
   );
 }

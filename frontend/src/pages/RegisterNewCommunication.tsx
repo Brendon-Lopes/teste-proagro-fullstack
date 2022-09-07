@@ -1,4 +1,4 @@
-import { DateTimePicker, Nav, RegistrationModal } from 'components';
+import { DateTimePicker, Footer, Nav, RegistrationModal } from 'components';
 import { IRegisterNewCommunication } from 'interfaces';
 import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -278,6 +278,7 @@ export function RegisterNewCommunication() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

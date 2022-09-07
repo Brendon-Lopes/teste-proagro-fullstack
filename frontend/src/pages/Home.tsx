@@ -1,4 +1,4 @@
-import { EventCard, Nav } from 'components';
+import { EventCard, Footer, Nav } from 'components';
 import { IEvent } from 'interfaces/IEvent';
 import { useEffect, useState } from 'react';
 import { EventsServices } from 'services/EventsServices';
@@ -26,7 +26,7 @@ export function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="flex-col">
       <Nav />
       <div className="flex justify-evenly items-center">
         <input
@@ -44,6 +44,8 @@ export function Home() {
           ))}
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
