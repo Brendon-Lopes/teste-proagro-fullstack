@@ -1,10 +1,15 @@
-import { DateTimePicker, Nav } from 'components';
+import { DateTimePicker, Nav, RegistrationModal } from 'components';
 import { IRegisterNewCommunication } from 'interfaces';
+import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { EventsServices } from 'services/EventsServices';
 import { RegisterNewCommunicationResolver } from 'validations';
 
 export function RegisterNewCommunication() {
+  const [display, setDisplay] = useState(false);
+  const [conflictId, setConflictId] = useState('');
+  const [created, setCreated] = useState(false);
+
   const formMethods = useForm<IRegisterNewCommunication>({
     resolver: RegisterNewCommunicationResolver,
   });
@@ -15,12 +20,29 @@ export function RegisterNewCommunication() {
     handleSubmit,
   } = formMethods;
 
-  const onSubmit = (data: any) => {
-    EventsServices.create(data);
+  const onSubmit = async (data: any) => {
+    const response = await EventsServices.create(data);
+
+    if (response === undefined) {
+      setCreated(true);
+    }
+
+    if (response) {
+      setConflictId(response.data.conflict._id.$oid);
+      setDisplay(true);
+      setCreated(false);
+    }
   };
 
   return (
-    <div>
+    <div className="relative">
+      <RegistrationModal
+        display={display}
+        setDisplay={setDisplay}
+        conflictId={conflictId}
+        setConflictId={setConflictId}
+      />
+
       <Nav />
 
       <div className="flex justify-center mt-10">
@@ -137,6 +159,8 @@ export function RegisterNewCommunication() {
                           </label>
                           <input
                             {...register('latitude')}
+                            min="-90"
+                            max="90"
                             type="number"
                             name="latitude"
                             id="latitude"
@@ -158,6 +182,8 @@ export function RegisterNewCommunication() {
                           </label>
                           <input
                             {...register('longitude')}
+                            min="-180"
+                            max="180"
                             type="number"
                             name="longitude"
                             id="longitude"
@@ -216,10 +242,28 @@ export function RegisterNewCommunication() {
                     <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
                       <button
                         type="submit"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="
+                          inline-flex
+                          justify-center
+                          rounded-md
+                          border
+                          border-transparent
+                          bg-green-600
+                          py-2
+                          px-4
+                          text-sm
+                          font-medium
+                          text-white
+                          shadow-sm
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-green-600
+                          focus:ring-offset-2"
                       >
-                        Save
+                        Salvar
                       </button>
+                      {created && <p>Cadastrado com sucesso!</p>}
                     </div>
                   </div>
                 </form>
