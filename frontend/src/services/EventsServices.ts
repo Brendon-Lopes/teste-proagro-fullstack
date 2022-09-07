@@ -5,7 +5,7 @@ const getAll = () => Api.get('/loss-events');
 
 const getById = (id: string) => Api.get(`/loss-events/${id}`);
 
-const create = (data: ISendEvent) => {
+const create = async (data: ISendEvent) => {
   const formattedData = {
     nome: data.nome,
     email: data.email,
@@ -19,7 +19,11 @@ const create = (data: ISendEvent) => {
     },
   };
 
-  Api.post('/loss-events', formattedData);
+  try {
+    await Api.post('/loss-events', formattedData);
+  } catch (error: any) {
+    return error?.response;
+  }
 };
 
 export const EventsServices = {
