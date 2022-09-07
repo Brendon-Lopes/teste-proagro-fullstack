@@ -26,24 +26,26 @@ export function Home() {
   }, []);
 
   return (
-    <div className="flex-col">
+    <div className="flex flex-col h-full">
       <Nav />
-      <div className="flex justify-evenly items-center">
-        <input
-          className="mt-5 block w-3/4 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm p-2"
-          type="number"
-          name="search"
-          onChange={(e) => handleChange(e)}
-          placeholder="Filtrar por CPF"
-        />
-      </div>
-      <section className="flex justify-center">
-        <div className="flex-col justify-center w-3/4 mt-10">
-          {filtered.map((event) => (
-            <EventCard key={event._id.$oid} {...event} />
-          ))}
+      <div>
+        <div className="flex justify-evenly items-center">
+          <input
+            className="mt-5 block w-3/4 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm p-2"
+            type="number"
+            name="search"
+            onChange={(e) => handleChange(e)}
+            placeholder="Filtrar por CPF"
+          />
         </div>
-      </section>
+        <section className="flex justify-center">
+          <div className="flex-col justify-center w-3/4 mt-10">
+            {filtered.map((event) => (
+              <EventCard key={event._id.$oid} {...event} />
+            ))}
+          </div>
+        </section>
+      </div>
 
       <Footer />
     </div>
