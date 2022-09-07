@@ -41,6 +41,7 @@ export function RegisterNewCommunication() {
         setDisplay={setDisplay}
         conflictId={conflictId}
         setConflictId={setConflictId}
+        type="cadastrar"
       />
 
       <Nav />
@@ -162,6 +163,7 @@ export function RegisterNewCommunication() {
                             min="-90"
                             max="90"
                             type="number"
+                            step="0.000001"
                             name="latitude"
                             id="latitude"
                             className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm p-2"
@@ -185,6 +187,7 @@ export function RegisterNewCommunication() {
                             min="-180"
                             max="180"
                             type="number"
+                            step="0.000001"
                             name="longitude"
                             id="longitude"
                             className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm p-2"
