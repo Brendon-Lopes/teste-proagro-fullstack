@@ -121,7 +121,10 @@ export function EditCommunication() {
                             htmlFor="cpf"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            CPF
+                            CPF{' '}
+                            <span className="text-gray-500">
+                              (apenas números)
+                            </span>
                           </label>
                           <input
                             {...register('cpf')}
