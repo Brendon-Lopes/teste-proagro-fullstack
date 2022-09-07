@@ -3,6 +3,7 @@ type Props = {
   setDisplay: (display: boolean) => void;
   conflictId: string;
   setConflictId: (conflictId: string) => void;
+  type: string;
 };
 
 export function RegistrationModal({
@@ -10,6 +11,7 @@ export function RegistrationModal({
   setDisplay,
   conflictId,
   setConflictId,
+  type,
 }: Props) {
   const handleClick = () => {
     setDisplay(false);
@@ -34,7 +36,7 @@ export function RegistrationModal({
         >
           <div className="h-4/5 flex flex-col gap-4 mb-6">
             <p className="text-lg font-semibold text-red-600">
-              Não foi possível cadastrar
+              Não foi possível {type}.
             </p>
             <div>
               <p className="text-gray-800 mb-1">
