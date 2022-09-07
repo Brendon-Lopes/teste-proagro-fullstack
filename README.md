@@ -27,20 +27,28 @@ Essa é uma aplicação Full Stack criada para esse cadastro de comunicação de
 
 ## Utilização
 
-- Clone o repositório
+### Clone o repositório
 ```bash
 git@github.com:Brendon-Lopes/teste-proagro-fullstack.git
 
 cd teste-proagro-fullstack
 ```
 
-- Rode o projeto com o docker-compose (o docker-compose irá subir o front-end, a API, o banco de dados e os seeders)
+### Variáveis de ambiente
+  - Entre na pasta /backend e renomeie o `.env.example` para `.env`
+  - Entre na pasta /frontend e renomeie o `.env.example` para `.env`
+
+### Rodando o projeto
+
+- Na raíz do projeto rode o projeto com o docker-compose (o docker-compose irá subir o front-end, a API, o banco de dados e os seeders)
 
 ```bash
 docker-compose up
 ```
 - Acesse http://localhost:3000
   - Pra acessar o front-end já integrado com a API
+
+<br>
 
 - Acesse http://localhost:5000
   - Pra acessar a documentação da API, onde é possível ver todos os endpoints e testá-los
