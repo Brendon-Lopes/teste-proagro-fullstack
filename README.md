@@ -34,13 +34,9 @@ git@github.com:Brendon-Lopes/teste-proagro-fullstack.git
 cd teste-proagro-fullstack
 ```
 
-### Variáveis de ambiente
-  - Entre na pasta /backend e renomeie o `.env.example` para `.env`
-  - Entre na pasta /frontend e renomeie o `.env.example` para `.env`
-
 ### Rodando o projeto
 
-- Na raíz do projeto rode o projeto com o docker-compose (o docker-compose irá subir o front-end, a API, o banco de dados e os seeders)
+- Na raíz, rode o projeto com o docker-compose (o docker-compose irá subir o front-end, a API, o banco de dados e os seeders)
 
 ```bash
 docker-compose up
