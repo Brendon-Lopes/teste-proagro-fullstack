@@ -1,4 +1,4 @@
-import { EventCard, Nav } from 'components';
+import { EventDetailsCard, Nav } from 'components';
 import { IEvent } from 'interfaces/IEvent';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -30,7 +30,7 @@ export function Details() {
   return (
     <div>
       <Nav />
-      <EventCard {...event} />
+      <EventDetailsCard {...event} />
     </div>
   );
 }
