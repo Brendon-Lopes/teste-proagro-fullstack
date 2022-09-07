@@ -31,6 +31,11 @@ const validateCPF = (cpf: string): any => {
   }
 };
 
+const validateCPFNumbers = (cpf: string) => {
+  const regex = new RegExp('^[0-9]+$');
+  return regex.test(cpf);
+};
+
 const verifyIfDateIsInThePast = (date: string): boolean => {
   const today = new Date();
   const dateToVerify = new Date(date);
@@ -59,6 +64,9 @@ const RegisterNewCommunicationSchema = yup.object({
   cpf: yup
     .string()
     .required('CPF é obrigatório')
+    .test('cpf', 'CPF deve conter apenas números', (value) =>
+      validateCPFNumbers(value as string)
+    )
     .test('cpf', 'CPF inválido', (value) => validateCPF(value as string)),
   lavoura: yup.string().required('O tipo de lavoura é obrigatório'),
   latitude: yup
