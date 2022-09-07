@@ -1,11 +1,21 @@
-import { Nav } from 'components';
+import { EventCard, Nav } from 'components';
 import { IEvent } from 'interfaces/IEvent';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { EventsServices } from 'services/EventsServices';
 
 export function Home() {
   const [events, setEvents] = useState<IEvent[]>([]);
+  const [filtered, setFiltered] = useState<IEvent[]>([]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const data = events.filter((item) => item.cpf.includes(event.target.value));
+
+    setFiltered(data);
+  };
+
+  useEffect(() => {
+    setFiltered(events);
+  }, [events]);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -18,16 +28,22 @@ export function Home() {
   return (
     <div>
       <Nav />
-      <ul>
-        {events.map((event) => (
-          <Link key={event._id.$oid} to={`/detalhes/${event._id.$oid}`}>
-            <li>
-              Nome: {event.nome}, CPF: {event.cpf}
-            </li>
-            <br />
-          </Link>
-        ))}
-      </ul>
+      <div className="flex justify-evenly items-center">
+        <input
+          className="mt-5 block w-3/4 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm p-2"
+          type="number"
+          name="search"
+          onChange={(e) => handleChange(e)}
+          placeholder="Filtrar por CPF"
+        />
+      </div>
+      <section className="flex justify-center">
+        <div className="flex-col justify-center w-3/4 mt-10">
+          {filtered.map((event) => (
+            <EventCard key={event._id.$oid} {...event} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
