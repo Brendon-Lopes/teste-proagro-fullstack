@@ -1,4 +1,9 @@
-import { Details, Home, RegisterNewCommunication } from 'pages';
+import {
+  Details,
+  EditCommunication,
+  Home,
+  RegisterNewCommunication,
+} from 'pages';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export function AppRoutes() {
@@ -11,6 +16,7 @@ export function AppRoutes() {
           element={<RegisterNewCommunication />}
         />
         <Route path="/detalhes/:id" element={<Details />} />
+        <Route path="/editar/:id" element={<EditCommunication />} />
         <Route path="*" element={<div>404 Page Not Found</div>} />
       </Routes>
     </BrowserRouter>
