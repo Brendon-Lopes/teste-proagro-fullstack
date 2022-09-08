@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export function Nav() {
   return (
-    <nav className="flex items-center justify-center bg-green-600 py-2">
+    <nav className="flex items-center justify-center bg-green-600 py-2 shadow-md">
       <div className="flex items-center w-3/4 gap-3">
         <img src={Proagrofacil} alt="Proagro logo" />
         <NavLink
