@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { EventsServices } from 'services/EventsServices';
 import { RegisterNewCommunicationResolver } from 'validations';
+import { possibleEventTypes } from 'services';
 
 export function RegisterNewCommunication() {
   const [display, setDisplay] = useState(false);
@@ -215,12 +216,9 @@ export function RegisterNewCommunication() {
                             name="evento"
                             className="mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 text-sm"
                           >
-                            <option>CHUVA EXCESSIVA</option>
-                            <option>GEADA</option>
-                            <option>GRANIZO</option>
-                            <option>SECA</option>
-                            <option>VENDAVAL</option>
-                            <option>RAIO</option>
+                            {possibleEventTypes.map((type) => (
+                              <option key={type}>{type}</option>
+                            ))}
                           </select>
                           {errors?.evento?.message && (
                             <p className="error-message">
