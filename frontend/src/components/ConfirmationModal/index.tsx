@@ -22,7 +22,7 @@ export function ConfirmationModal({ display, setDisplay }: Props) {
 
   return (
     <div className={`absolute ${display ? 'block' : 'hidden'}`}>
-      <div className="relative w-screen z-10 h-screen flex items-center justify-center">
+      <div className="relative w-screen z-10 min-h-screen flex items-center justify-center">
         <div className="w-screen h-screen absolute bg-gray-900 opacity-80" />
         <div
           className="
