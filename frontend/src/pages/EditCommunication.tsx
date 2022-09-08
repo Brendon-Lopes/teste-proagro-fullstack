@@ -3,6 +3,7 @@ import { IRegisterNewCommunication, IState } from 'interfaces';
 import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useLocation, useParams } from 'react-router-dom';
+import { possibleEventTypes } from 'services';
 import { EventsServices } from 'services/EventsServices';
 import { RegisterNewCommunicationResolver } from 'validations';
 
@@ -68,7 +69,7 @@ export function EditCommunication() {
             </div>
             <div className="mt-5 md:col-span-2 md:mt-0">
               <FormProvider {...formMethods}>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} className="mb-12">
                   <div className="overflow-hidden shadow sm:rounded-md">
                     <div className="bg-white px-4 py-5 sm:p-6">
                       <div className="grid grid-cols-6 gap-6">
@@ -227,12 +228,9 @@ export function EditCommunication() {
                             name="evento"
                             className="mt-1 block w-full rounded-md border border-gray-300 bg-white p-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 text-sm"
                           >
-                            <option>CHUVA EXCESSIVA</option>
-                            <option>GEADA</option>
-                            <option>GRANIZO</option>
-                            <option>SECA</option>
-                            <option>VENDAVAL</option>
-                            <option>RAIO</option>
+                            {possibleEventTypes.map((type) => (
+                              <option key={type}>{type}</option>
+                            ))}
                           </select>
                           {errors?.evento?.message && (
                             <p className="error-message">
