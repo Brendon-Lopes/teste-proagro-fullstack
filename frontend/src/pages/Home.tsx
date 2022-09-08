@@ -38,7 +38,7 @@ export function Home() {
             placeholder="Filtrar por CPF"
           />
         </div>
-        <section className="flex justify-center">
+        <section className="flex justify-center mb-10">
           <div className="flex-col justify-center w-3/4 mt-10">
             {filtered.map((event) => (
               <EventCard key={event._id.$oid} {...event} />
