@@ -15,8 +15,8 @@ export function EventDetailsCard({ event, setDisplay }: Props) {
   };
 
   return (
-    <section className="flex justify-center sm:mt-6">
-      <div className="overflow-hidden bg-white shadow sm:rounded-lg sm:w-3/5">
+    <section className="flex justify-center sm:mt-6 mb-6">
+      <div className="overflow-hidden bg-white shadow-md sm:rounded-lg sm:w-3/5">
         <div className="sm:flex sm:justify-between">
           <div className="px-4 py-5 sm:px-6">
             <h3 className="text-lg font-medium leading-6 text-gray-900">
