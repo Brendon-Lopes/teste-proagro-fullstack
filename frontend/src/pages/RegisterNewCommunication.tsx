@@ -35,7 +35,7 @@ export function RegisterNewCommunication() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-screen flex flex-col justify-between">
       <RegistrationModal
         display={display}
         setDisplay={setDisplay}
@@ -63,8 +63,8 @@ export function RegisterNewCommunication() {
             </div>
             <div className="mt-5 md:col-span-2 md:mt-0">
               <FormProvider {...formMethods}>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="overflow-hidden shadow sm:rounded-md">
+                <form onSubmit={handleSubmit(onSubmit)} className="mb-12">
+                  <div className="overflow-hidden shadow-md sm:rounded-md">
                     <div className="bg-white px-4 py-5 sm:p-6">
                       <div className="grid grid-cols-6 gap-6">
                         <div className="col-span-6 sm:col-span-5">
