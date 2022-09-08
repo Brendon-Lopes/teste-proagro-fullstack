@@ -9,6 +9,7 @@ services:
       - backend
     volumes:
       - ./frontend:/app-frontend
+      - front_node_modules:/app-frontend/node_modules
     restart: always
   backend:
     container_name: app_backend
@@ -36,3 +37,5 @@ services:
       - ./backend/.env
     depends_on:
       - db
+volumes:
+  front_node_modules:
