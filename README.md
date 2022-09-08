@@ -1,6 +1,6 @@
 # Teste SoftFocus Full Stack
 
-## Descrição
+# Descrição
 O Proagro Fácil é um sistema da Softfocus que facilita o gerenciamento de
 Proagro (Programa de Garantia da Atividade Agropecuária). O Proagro é um
 programa administrado pelo Banco Central do Brasil, que visa exonerar o produtor
@@ -16,16 +16,16 @@ corretamente para que o produtor tenha o benefício aprovado.
 
 Essa é uma aplicação Full Stack criada para esse cadastro de comunicação de perdas ocorridas.
 
-## Tecnologias utilizadas
- - Front-end desenvolvido em ReactJS com TypeScript e TailwindCSS
- - API desenvolvida em Python com Flask e Flask-restx, testada com Pytest e documentada com Swagger
- - Banco de dados MongoDB
+# Tecnologias utilizadas
+- Front-end desenvolvido em ReactJS com TypeScript e TailwindCSS
+- API desenvolvida em Python com Flask e Flask-restx, testada com Pytest e documentada com Swagger
+- Banco de dados MongoDB
 
-## Requisitos
- - Docker
- - Docker Compose
+# Requisitos
+- Docker
+- Docker Compose
 
-## Utilização
+# Utilização
 
 ### Clone o repositório
 ```bash
@@ -35,22 +35,12 @@ cd teste-proagro-fullstack
 ```
 
 ### Rodando o projeto
-- Instale as dependências do front-end para evitar erros no docker-compose
-```bash
-cd frontend
-```
-```bash
-npm install
-```
-```bash
-cd ..
-```
-
 - Na raíz, rode o projeto com o docker-compose (o docker-compose irá subir o front-end, a API, o banco de dados e os seeders)
 
 ```bash
 docker-compose up
 ```
+
 - Acesse http://localhost:3000
   - Pra acessar o front-end já integrado com a API
 
@@ -59,5 +49,18 @@ docker-compose up
 - Acesse http://localhost:5000
   - Pra acessar a documentação da API, onde é possível ver todos os endpoints e testá-los
 
-Também é possível utilizar a API separadamento pelos endpoints mostrados na documentação.
+Também é possível utilizar a API separadamente pelos endpoints mostrados na documentação.
 
+# Testando o back-end
+
+### com o docker-compose rodando, abra o terminal do container do backend pelo docker
+
+```bash
+docker exec -it app_backend bash
+```
+
+### rode os testes com o pytest
+
+```bash
+python -m pytest
+```
