@@ -27,29 +27,30 @@ export function EventDetailsCard({ event, setDisplay }: Props) {
               comunicação.
             </p>
           </div>
-          <div>
+          <div className="flex flex-col sm:flex-row">
             <button
               className="
-              h-10
-              inline-flex
-              justify-center
-              rounded-md
-              border
-              border-transparent
-              bg-green-600
-              py-2
-              px-4
-              text-sm
-              font-medium
-              text-white
-              shadow-sm
-              hover:bg-green-700
-              focus:outline-none
-              focus:ring-2
-              focus:ring-green-600
-              focus:ring-offset-2
-              mt-5
-              mr-6
+                h-10
+                inline-flex
+                justify-center
+                rounded-md
+                border
+                border-transparent
+                bg-green-600
+                py-2
+                px-4
+                text-sm
+                font-medium
+                text-white
+                shadow-sm
+                hover:bg-green-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-green-600
+                focus:ring-offset-2
+                mt-5
+                mx-6
+                sm:mr-0
               "
               onClick={() =>
                 navigate(`/editar/${event._id.$oid}`, { state: event })
@@ -77,8 +78,8 @@ export function EventDetailsCard({ event, setDisplay }: Props) {
               focus:ring-2
               focus:ring-red-600
               focus:ring-offset-2
-              mt-5
-              mr-5
+              my-5
+              mx-5
               "
               onClick={() => setDisplay(true)}
             >
